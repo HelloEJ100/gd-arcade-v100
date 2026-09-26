@@ -22,11 +22,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
-    game.setGameOverMessage(true, "Level Complete!")
-    game.setGameOverEffect(true, effects.splatter)
-    game.gameOver(true)
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Ship_portal, function (sprite, otherSprite) {
     gamemode = 1
 })
@@ -45,6 +40,11 @@ function AR_check () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.big_spike, function (sprite, otherSprite) {
     AR_check()
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
+    game.setGameOverMessage(true, "Level Complete!")
+    game.setGameOverEffect(true, effects.splatter)
+    game.gameOver(true)
+})
 function spawn () {
     info.setScore(0)
     game.setGameOverScoringType(game.ScoringType.HighScore)
@@ -54,8 +54,8 @@ function spawn () {
     for (let value of tiles.getTilesByType(assets.tile`myTile`)) {
         tiles.setWallAt(value, true)
     }
-    for (let value2 of tiles.getTilesByType(assets.tile`myTile2`)) {
-        tiles.placeOnRandomTile(mySprite, assets.tile`myTile2`)
+    for (let value2 of tiles.getTilesByType(assets.tile`myTile7`)) {
+        tiles.placeOnRandomTile(mySprite, assets.tile`myTile7`)
         tiles.setTileAt(value2, assets.tile`transparency16`)
     }
     mySprite.setVelocity(100, 0)
@@ -141,7 +141,89 @@ function spawn () {
             `, SpriteKind.Display2)
         tiles.placeOnTile(mySprite3, value4)
     }
-    for (let value5 of tiles.getTilesByType(assets.tile`myTile6`)) {
+    for (let value3 of tiles.getTilesByType(assets.tile`myTile9`)) {
+        tiles.setTileAt(value3, assets.tile`transparency16`)
+        mySprite2 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.big_spike)
+        tiles.placeOnTile(mySprite2, value3)
+        mySprite3 = sprites.create(img`
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 f f f f f f f f f f f f f f 1 
+            . 1 f f f f f f f f f f f f 1 . 
+            . 1 f f f f f f f f f f f f 1 . 
+            . . 1 f f f f f f f f f f 1 . . 
+            . . 1 f f f f f f f f f f 1 . . 
+            . . . 1 f f f f f f f f 1 . . . 
+            . . . 1 f f f f f f f f 1 . . . 
+            . . . . 1 f f f f f f 1 . . . . 
+            . . . . 1 f f f f f f 1 . . . . 
+            . . . . . 1 f f f f 1 . . . . . 
+            . . . . . 1 f f f f 1 . . . . . 
+            . . . . . . 1 f f 1 . . . . . . 
+            . . . . . . 1 f f 1 . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            `, SpriteKind.display1)
+        tiles.placeOnTile(mySprite3, value3)
+    }
+    for (let value4 of tiles.getTilesByType(assets.tile`myTile10`)) {
+        tiles.setTileAt(value4, assets.tile`transparency16`)
+        mySprite2 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.small_spike)
+        tiles.placeOnTile(mySprite2, value4)
+        mySprite3 = sprites.create(img`
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 f f f f f f f f f f f f f f 1 
+            . 1 f f f f f f f f f f f f 1 . 
+            . . 1 f f f f f f f f f f 1 . . 
+            . . . 1 f f f f f f f f 1 . . . 
+            . . . . 1 f f f f f f 1 . . . . 
+            . . . . . 1 f f f f 1 . . . . . 
+            . . . . . . 1 f f 1 . . . . . . 
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Display2)
+        tiles.placeOnTile(mySprite3, value4)
+    }
+    for (let value5 of tiles.getTilesByType(assets.tile`myTile3`)) {
         tiles.setTileAt(value5, assets.tile`transparency16`)
         mySprite4 = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -163,7 +245,7 @@ function spawn () {
             `, SpriteKind.yellow_pad)
         tiles.placeOnTile(mySprite4, value5)
     }
-    for (let value5 of tiles.getTilesByType(assets.tile`myTile5`)) {
+    for (let value5 of tiles.getTilesByType(assets.tile`myTile2`)) {
         tiles.setTileAt(value5, assets.tile`transparency16`)
         mySprite5 = sprites.create(img`
             . . . . 3 3 3 3 3 f f . . . . . 
@@ -185,28 +267,6 @@ function spawn () {
             `, SpriteKind.Ship_portal)
         tiles.placeOnTile(mySprite5, value5)
     }
-    for (let value of tiles.getTilesByType(assets.tile`myTile8`)) {
-        tiles.setTileAt(value, assets.tile`transparency16`)
-        mySprite6 = sprites.create(img`
-            . . . . 2 2 2 2 2 f f . . . . . 
-            . . . . 2 2 2 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . . . . 2 2 f f . . . . . 
-            . . . . 2 2 2 2 2 f f . . . . . 
-            . . . . 2 2 2 2 2 f f . . . . . 
-            `, SpriteKind.ball_portal)
-        tiles.placeOnTile(mySprite6, tiles.getTileLocation(0, 0))
-    }
 }
 controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
     if (game2 == 1) {
@@ -219,7 +279,6 @@ controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
         }
     }
 })
-let mySprite6: Sprite = null
 let mySprite5: Sprite = null
 let mySprite4: Sprite = null
 let mySprite3: Sprite = null
